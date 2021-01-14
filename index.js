@@ -1,3 +1,13 @@
+const server = require('./api/server')
+
+const PORT = 5000
+
+server.listen(PORT, () => {
+    console.log(`server is up and running on port ${PORT}`)
+})
+
+
+
 /*
 play this: https://www.youtube.com/watch?v=d-diB65scQU
 
