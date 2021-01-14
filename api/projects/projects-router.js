@@ -19,16 +19,26 @@ router.get('/:id', valPostId, (req, res) => {
 
 router.get('/:id/actions', valPostId, (req, res) => {
     const actions = req.prjct.actions
-    actions ? res.status(200).json(actions) : res.status(404).json(`user with ID: ${req.params.id} has no actions`)
+    actions.length ? res.status(200).json(actions) : res.status(404).json(`user with ID: ${req.params.id} has no actions`)
+})
+
+router.post('/', (req, res, next) => {
+    Proj.insert(req.body)
+        .then(prj => {
+            res.status(200).json(prj)
+        })
+        .catch(err => {
+            next(err)
+        })
 })
 
 
 
 
 
-router.use((error, req, res) => {
+router.use((err, req, res) => {
     res.status(500).json({
-      message: error.message
+      message: err.message
     })
   })
 
