@@ -17,6 +17,11 @@ router.get('/:id', valPostId, (req, res) => {
     res.status(200).json(req.prjct)
 })
 
+router.get('/:id/actions', valPostId, (req, res) => {
+    const actions = req.prjct.actions
+    actions ? res.status(200).json(actions) : res.status(404).json(`user with ID: ${req.params.id} has no actions`)
+})
+
 
 
 
