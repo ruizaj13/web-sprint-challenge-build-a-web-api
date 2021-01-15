@@ -20,7 +20,7 @@ router.get('/:id', valProjId, (req, res) => {
 router.get('/:id/actions', valProjId, (req, res, next) => {
     Proj.getProjectActions(req.params.id)
         .then(actions => {
-            actions.length ? res.status(200).json(actions) : res.status(404).json(`Project with ID: ${req.params.id} has no actions`)
+            actions.length ? res.status(200).json(actions) : res.status(404).json([]) //`Project with ID: ${req.params.id} has no actions` <-original json msg i removed for the sake of passing npm tests
         })
         .catch(err => {
             next(err)
