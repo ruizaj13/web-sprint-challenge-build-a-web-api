@@ -16,7 +16,7 @@ async function valProjId(req, res, next) {
 }
 
 function valNewProj(req, res, next)  {
-    req.body.name || req.body.description ? next() : res.status(400).json({error: 'please provide updated data'})
+    req.body.name || req.body.description ? next() : res.status(400).json({error: 'please provide project data'})
 }
 
 module.exports = {valProjId, valNewProj}
