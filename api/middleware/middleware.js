@@ -1,7 +1,7 @@
 const Proj = require('../projects/projects-model')
 const Act = require('../actions/actions-model')
 
-async function valPostId(req, res, next) {
+async function valProjId(req, res, next) {
     try {
         const prjct = await Proj.get(req.params.id)
         if (prjct) {
@@ -15,4 +15,8 @@ async function valPostId(req, res, next) {
     }
 }
 
-module.exports = {valPostId}
+function valNewProj(req, res, next)  {
+    req.body.name || req.body.description ? next() : res.status(400).json({error: 'please provide updated data'})
+}
+
+module.exports = {valProjId, valNewProj}
